@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% extends 'base.html' %}
+{% load static %}
+
+<link rel="stylesheet"
+      href="https://cdn.pydata.org/bokeh/release/bokeh-2.2.1.min.css"
+      type="text/css"/>
+<link rel="stylesheet"
+      href="https://cdn.pydata.org/bokeh/release/bokeh-widgets-2.2.1.min.css"
+      type="text/css"/>
+<link rel="stylesheet"
+      href="https://cdn.pydata.org/bokeh/release/bokeh-tables-2.2.1.min.css"
+      type="text/css"/>
+
+<script type="text/javascript"
+        src="https://cdn.pydata.org/bokeh/release/bokeh-2.2.1.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.pydata.org/bokeh/release/bokeh-widgets-2.2.1.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.pydata.org/bokeh/release/bokeh-tables-2.2.1.min.js"></script>
+<script type="text/javascript">
+    Bokeh.set_log_level("info");
+</script>
+
+
+{% block body_block %}
+    <section id="contact">
+        <div class="overlay"></div>
+        <div class="row narrow section-intro">
+            <div class="col-twelve with-bottom-sep">
+                <h3>DEFINED-Proteins</h3>
+                <h3>Results</h3>
+            </div>
+        </div>
+    </section>
+    <link rel="stylesheet"
+          href="https://cdn.pydata.org/bokeh/release/bokeh-2.2.1.min.css"
+          type="text/css"/>
+    <link rel="stylesheet"
+          href="https://cdn.pydata.org/bokeh/release/bokeh-widgets-2.2.1.min.css"
+          type="text/css"/>
+    <link rel="stylesheet"
+          href="https://cdn.pydata.org/bokeh/release/bokeh-tables-2.2.1.min.css"
+          type="text/css"/>
+
+    <script type="text/javascript"
+            src="https://cdn.pydata.org/bokeh/release/bokeh-2.2.1.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdn.pydata.org/bokeh/release/bokeh-widgets-2.2.1.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdn.pydata.org/bokeh/release/bokeh-tables-2.2.1.min.js"></script>
+    <script type="text/javascript">
+        Bokeh.set_log_level("info");
+    </script>
+    <div class='column' style="text-align: center; justify-content: center;
+    align-content: center; place-content: center">
+        <div style="width: 36rem; place-content: center;justify-content: center;
+        margin:auto">
+            <h3> Descriptor File Download</h3>
+            <div>
+                <a href={{ descr_file }} download>Download</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</html>

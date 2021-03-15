@@ -1,0 +1,2 @@
+class BreakToNextFile(Exception):
+    pass

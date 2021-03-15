@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% extends 'base.html' %}
+{% load static %}
+
+<link rel="stylesheet"
+      href="https://cdn.pydata.org/bokeh/release/bokeh-2.2.1.min.css"
+      type="text/css"/>
+<link rel="stylesheet"
+      href="https://cdn.pydata.org/bokeh/release/bokeh-widgets-2.2.1.min.css"
+      type="text/css"/>
+<link rel="stylesheet"
+      href="https://cdn.pydata.org/bokeh/release/bokeh-tables-2.2.1.min.css"
+      type="text/css"/>
+
+<script type="text/javascript"
+        src="https://cdn.pydata.org/bokeh/release/bokeh-2.2.1.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.pydata.org/bokeh/release/bokeh-widgets-2.2.1.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.pydata.org/bokeh/release/bokeh-tables-2.2.1.min.js"></script>
+<script type="text/javascript">
+    Bokeh.set_log_level("info");
+</script>
+
+
+{% block body_block %}
+    <section id="contact">
+        <div class="overlay"></div>
+        <div class="row narrow section-intro">
+            <div class="col-twelve with-bottom-sep">
+                <h3>DEFINED-Proteins</h3>
+                <h3>Results</h3>
+                <h4>Descriptor: {{ descr }}&emsp;PDB ID: {{ pdb_id }}&emsp;Chain
+                    ID: {{ cid }}&emsp;Starting Residue: {{ sno }}</h4>
+
+                <div style="margin: auto;  display: flex;justify-content: space-around;">
+                    <form action="{% url 'results1' %}" method="post"
+                          style="color: black">
+                        {% csrf_token %}
+                        <input id="selection" type="hidden" name="selection"
+                               value="1" title="selection">
+                        <input id="userid" type="hidden" name="userid"
+                               value="{{ userid }}" title="userid">
+                        <div style=" display: flex;justify-content: center">
+                            <input type="submit" value="Best Fitted Structures">
+                        </div>
+                    </form>
+                    <form action="{% url 'results2' %}" method="post">
+                        {% csrf_token %}
+                        <input id="selection" type="hidden" name="selection"
+                               value="2" title="selection">
+                        <input id="userid" type="hidden" name="userid"
+                               value="{{ userid }}" title="userid"
+                               style="color: black">
+                        <div style=" display: flex;justify-content: center">
+                            <input type="submit" value="Individual Position
+                        Scoring">
+                        </div>
+                    </form>
+                    <form action="{% url 'results3' %}" method="post">
+                        {% csrf_token %}
+                        <input id="selection" type="hidden" name="selection"
+                               value="3" title="selection">
+                        <input id="userid" type="hidden" name="userid"
+                               value="{{ userid }}" title="userid"
+                               style="color: black">
+                        <div style=" display: flex;justify-content: center">
+                            <input type="submit" value="Descriptor Scoring">
+                        </div>
+                    </form>
+                    <form action="{% url 'index' %}" method="post">
+                        {% csrf_token %}
+                        <input id="selection" type="hidden" name="selection"
+                               value="4" title="selection">
+                        <input id="userid" type="hidden" name="userid"
+                               value="{{ userid }}" title="userid"
+                               style="color: black">
+                        <div style=" display: flex;justify-content: center">
+                            <input type="submit" value="Back to Query page">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <link rel="stylesheet"
+          href="https://cdn.pydata.org/bokeh/release/bokeh-2.2.1.min.css"
+          type="text/css"/>
+    <link rel="stylesheet"
+          href="https://cdn.pydata.org/bokeh/release/bokeh-widgets-2.2.1.min.css"
+          type="text/css"/>
+    <link rel="stylesheet"
+          href="https://cdn.pydata.org/bokeh/release/bokeh-tables-2.2.1.min.css"
+          type="text/css"/>
+
+    <script type="text/javascript"
+            src="https://cdn.pydata.org/bokeh/release/bokeh-2.2.1.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdn.pydata.org/bokeh/release/bokeh-widgets-2.2.1.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdn.pydata.org/bokeh/release/bokeh-tables-2.2.1.min.js"></script>
+    <script type="text/javascript">
+        Bokeh.set_log_level("info");
+    </script>
+    <div class='column' style="text-align: center; justify-content: center;
+    align-content: center; place-content: center">
+        <div style="width: 36rem; place-content: center;justify-content: center;
+        margin:auto">
+            <div>
+                <h3> Descriptor Scoring</h3>
+            </div>
+            <div>
+                {{ d5 | safe }}
+                {{ s5 | safe }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</html>

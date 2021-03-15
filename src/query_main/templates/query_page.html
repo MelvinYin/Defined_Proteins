@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+
+{% block body_block %}
+{% load static %}
+
+<section id="contact">
+    <div class="overlay"></div>
+    <div class="row narrow section-intro">
+        <div class="col-twelve">
+            <h3 style="color: black">DEFINED-Proteins</h3>
+            <h4 style="text-align: center">Build your custom descriptor in
+                Build, or find the best realisation for a query structure in
+                Query.
+            </h4>
+        </div>
+    </div></section>
+
+<form action="{% url 'index' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2 style="text-align: center"> Build </h2>
+    <h4 style="text-align: center"> Upload your aligned sequences or matrix file. </h4>
+    <div style="display: flex;justify-content: space-around;">
+        <div style="display:inline-block; text-align: center">
+            <label for="pdb_id" style="color: black">Aligned Sequences</label>
+            <input type="file" id="aligned_file" name="aligned_file">
+            <a href="/static/tmp/efhand_aligned.txt" download>Example</a>
+        </div>
+        <div style="display:inline-block; text-align: center; justify-content: center">
+            <label for="pdb_id" style="color: black">Matrix</label>
+            <input type="file" id="matrix_file" name="matrix_file">
+            <a href="/static/tmp/GxGxxG_pssm.txt" download>Example</a>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center">
+        <input type="submit" value="Upload" style="background-color: lightgray">
+    </div>
+    <div><br></div>
+    <h2 style="text-align: center"> Query </h2>
+    <h4 style="text-align: center">Select the appropriate descriptor, and key
+        in the query PDB ID, Chain ID, and starting residue position of
+        the desired segment below. </h4>
+    <div style="display: flex;justify-content: space-around;">
+        <div style="display:inline-block;justify-content: space-around;">
+            <div style="text-align: center">
+                <label for="descr" style="color: black">Descriptor </label>
+                <label for="descr_file">Upload your descriptor file or
+                    choose from pre-compiled list.</label>
+                <div style="display:inline-block; width: 60%">
+                    <input type="file" id="descr_file" name="descr_file">
+                </div>
+                <div style="display:inline-block; width: 39%">
+                <select name="descr" id="descr" style="background-color: lightcyan">
+                    <option value="ef">Ef-Hand</option>
+                    <option value="gxgxxg">GxGxxG</option>
+                    <option value="gxxgxg">GxxGxG</option>
+                </select>
+                </div>
+            </div>
+        </div>
+        <div style="display:inline-block; text-align: center;justify-content: space-around;">
+            <label for="descr" style="color: black">Query Structure </label>
+            <div style="display:inline-block; text-align: center">
+                <label for="pdb_id" style="color: black">PDB ID </label>
+                <input id="pdb_id" type="text" name="pdb_id"
+                       value="{{ pdb_id }}" title="pdb_id" style="color:
+                           black; background-color: lightcyan">
+            </div>
+            <div style="display:inline-block; text-align: center">
+                <label for="cid" style="color: black">Chain ID </label>
+                <input id="cid" type="text" name="cid"
+                       value="{{ cid }}" style="color:
+                           black; background-color: lightcyan">
+            </div>
+            <div style="display:inline-block; text-align: center">
+                <label for="sno" style="color: black">First Residue Position </label>
+                <input id="sno" type="text" name="sno"
+                       value="{{ sno }}" style="color:
+                           black; background-color: lightcyan">
+
+            </div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center">
+        <input type="submit" value="Select" style="background-color: lightgray">
+    </div>
+</form>
+
+
+{% endblock %}
+</html>
