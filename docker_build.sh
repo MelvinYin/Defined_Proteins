@@ -1,0 +1,1 @@
+/opt/conda/bin/python ./download_data_folder.py && /opt/conda/bin/python ./src/manage.py runserver 0.0.0.0:80

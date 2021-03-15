@@ -1,0 +1,25 @@
+To update deployment:
+cd to dockerfile folder
+docker build -t definedproteins --build-arg CACHEBUST=$(date +%s ) .
+docker image tag definedproteins melvinyin/definedproteins:latest
+docker image push melvinyin/definedproteins:latest
+
+On the deployed side:
+docker container ls => docker stop [CONTAINER_ID]
+docker system prune -a
+docker pull melvinyin/definedproteins
+docker run --publish 80:80 melvinyin/definedproteins /bin/bash ./docker_build.sh
+
+To add security:
+1. Remove debug mode, set DEBUG=False in src/site_main/settings.py
+2. Remove allowing all hosts, to include only localhost, ec2-smth, and
+defined-proteins.com
+3. For http that's about it, unless you also want to hide django secretkey,
+which doesn't do that much
+4. To add https, use the uwsgi dockerfile from my own portfolio website, but
+this requires either doing a docker-in-docker, so uwsgi call this dockerfile.
+This is preferred perhaps because then not much changes need to be added here.
+Or, merge this dockerfile into the uwsgi one (do not do the other way, getting
+uwsgi to work properly is harder). uwsgi relies on python3.8-buster, apt seems
+to work so in theory it should work. In practice, good luck. Just keep http,
+there are better hills to die on.
