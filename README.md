@@ -1,10 +1,8 @@
 # DEFINED-Proteins
 <p>
-Defined proteins is now live, at http://definedproteins.com
+Defined proteins[2] is now live, at http://definedproteins.com
 
-Note the http and not https, you may have to manually type it in.
-
-Otherwise, either:
+For local deployment, either:
 1. docker pull melvinyin/definedproteins  
 OR 1. Copy the dockerfile/Dockerfile here into a local .txt file named
  Dockerfile, and docker build -t definedproteins --build-arg CACHEBUST=$(date +%s ) .  
@@ -70,5 +68,6 @@ Navigate to your browser's localhost:8000 and it should work.
 [1] portno is hard-coded in ./docker_build.sh, you probably need to manually
  docker run -it and change that, sorry. Remember to docker commit/save and
   use that image, and to change port mapping in --publish, in run step.
-   
+
+[2] DEFINED-Proteins = Descriptor of Function IN Engineering and Design - Proteins
 </p>
