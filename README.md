@@ -2,6 +2,8 @@
 <p>
 Defined proteins[2] is now live, at http://definedproteins.com
 
+https://www.frontiersin.org/articles/10.3389/fbinf.2021.657529/full
+
 For local deployment, either:
 1. docker pull melvinyin/definedproteins  
 OR 1. Copy the dockerfile/Dockerfile here into a local .txt file named
